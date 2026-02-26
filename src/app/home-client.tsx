@@ -158,7 +158,6 @@ export default function HomeClient() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [searched, setSearched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   // Fetch stats on mount
   useEffect(() => {
@@ -197,15 +196,8 @@ export default function HomeClient() {
     []
   );
 
-  const handleInput = (value: string) => {
-    setQuery(value);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => search(value), 400);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (debounceRef.current) clearTimeout(debounceRef.current);
     search(query);
   };
 
@@ -283,7 +275,7 @@ export default function HomeClient() {
                 ref={inputRef}
                 type="text"
                 value={query}
-                onChange={(e) => handleInput(e.target.value)}
+                onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search any topic... (e.g., candy, AI, basketball)"
                 className="flex-1 bg-transparent text-lg text-zinc-100 placeholder-zinc-500 outline-none"
                 autoFocus
