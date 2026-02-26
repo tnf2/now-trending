@@ -80,6 +80,7 @@ export async function saveDb(db: TrendsDb): Promise<void> {
       access: "public",
       contentType: "application/json",
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
     dbCache = db;
     cacheTimestamp = Date.now();

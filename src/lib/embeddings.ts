@@ -1,13 +1,21 @@
 /**
  * Embedding generation using OpenAI text-embedding-3-small
+ * Lazy-initializes OpenAI client to avoid build-time errors
  */
 
 import OpenAI from "openai";
 import { getTopicsWithoutEmbeddings, updateEmbeddings } from "./db";
 
-const openai = new OpenAI();
 const MODEL = "text-embedding-3-small";
 const BATCH_SIZE = 100;
+
+let _openai: OpenAI | null = null;
+function getOpenAI(): OpenAI {
+  if (!_openai) {
+    _openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  }
+  return _openai;
+}
 
 export async function generateEmbeddings(): Promise<void> {
   const topics = await getTopicsWithoutEmbeddings();
@@ -19,6 +27,7 @@ export async function generateEmbeddings(): Promise<void> {
 
   console.log(`Generating embeddings for ${topics.length} topics...`);
   const embeddingMap: Record<string, number[]> = {};
+  const openai = getOpenAI();
 
   for (let i = 0; i < topics.length; i += BATCH_SIZE) {
     const batch = topics.slice(i, i + BATCH_SIZE);
@@ -63,6 +72,7 @@ export async function generateEmbeddings(): Promise<void> {
 }
 
 export async function embedQuery(query: string): Promise<number[]> {
+  const openai = getOpenAI();
   const response = await openai.embeddings.create({
     model: MODEL,
     input: query,
