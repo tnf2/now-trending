@@ -16,9 +16,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Force dynamic rendering so trending data is always fresh
-export const dynamic = "force-dynamic";
-export const revalidate = 300; // revalidate every 5 minutes
+// Revalidate every 5 minutes so trending data stays fresh
+export const revalidate = 300;
 
 interface TrendingTopic {
   query: string;
