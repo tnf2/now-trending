@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --accent: #10b981;
+  --accent-hover: #34d399;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Search bar glow */
+.search-glow {
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2),
+    0 0 20px rgba(16, 185, 129, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-glow:focus-within {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4),
+    0 0 40px rgba(16, 185, 129, 0.15);
+}
+
+/* Result card animation */
+.result-card {
+  transition: all 0.2s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+}
+
+/* Skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #27272a 25%, #3f3f46 50%, #27272a 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Volume bar */
+.volume-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  transition: width 0.5s ease;
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
