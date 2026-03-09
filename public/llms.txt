@@ -1,0 +1,26 @@
+# Now Trending — Real-Time Trend Discovery
+
+> Search any topic and instantly discover related trending searches from Google Trends. See what the world is searching for right now.
+
+## About
+
+Now Trending is a free trend discovery tool that lets you search any topic and instantly see related trending searches, rising queries, and search interest over time. Powered by Google Trends data, it provides a simple interface for exploring what people are searching for — useful for content creators, marketers, researchers, and the curious.
+
+## Features
+
+- **Topic Search**: Enter any keyword to see related trending searches
+- **Rising Queries**: Discover breakout searches with explosive growth
+- **Real-Time Data**: Powered by live Google Trends data
+- **Clean Interface**: No clutter, no ads — just trends
+
+## Use Cases
+
+- Content creators finding trending topics to cover
+- Marketers researching keyword trends and seasonal interest
+- Journalists tracking emerging stories
+- SEO professionals identifying rising search queries
+- Researchers analyzing public interest patterns
+
+## Links
+
+- Website: https://now-trend.ing
